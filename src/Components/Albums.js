@@ -5,7 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Albums({ album, deleteData, changePage, changeUpdateId }) {
   const showToastMessage = (userId) => {
-      toast.success(`Item Removed. UserId is ${userId}`)
+    let message = <p>Item Removed. <strong>UserId was {userId}</strong></p>
+      // toast.success( `Item Removed. <strong>UserId was ${userId}</strong>`)
+      toast.success(message)
   };
   function filterToDelete(id,userId) {
     let afterDelete = album.filter((value) => value.id !== id);
@@ -15,8 +17,8 @@ function Albums({ album, deleteData, changePage, changeUpdateId }) {
   function renderAlbum(data, index) {
     return (
       <div className="albumBox" key={index}>
-        <p className="albumname">{data?.title}</p>
-        <p className="albumname"><strong>User Id</strong> &gt;&nbsp;{data?.userId}</p>
+        <p className="albumName"><strong>{data?.title}</strong></p>
+        <p className="albumUserId">User Id &gt;&nbsp;{data?.userId}</p>
         <div className="buttons">
           <button
             className="delete"

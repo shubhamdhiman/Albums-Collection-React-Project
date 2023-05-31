@@ -23,7 +23,8 @@ function UpdateAlbum({ updateId, updateData, album }) {
 
      // Set the updated array as the new state
      updateData(updatedItems);
-     toast.success(`UserId ${itemToUpdate.userId} Data Updated, New UserId is ${updatedItem.userId} `, {
+     let message = <p><strong>UserId {itemToUpdate.userId}</strong> Data Updated, <strong>New UserId is {updatedItem.userId}</strong></p>
+     toast.success(message, {
       toastId: 'success1',
   })
   }

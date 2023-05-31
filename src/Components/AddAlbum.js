@@ -16,9 +16,8 @@ function AddAlbum({album,addData}) {
     let newData = [...album, {userId:userId,title:title,id:album.length+1} ]
     changeToInitial()
     addData(newData)
-    toast.success(`Album Added. UserId is ${userId}`, {
-      toastId: 'success1',
-  })
+    let message = <p>Album Added. <strong>UserId is {userId}</strong></p>
+    toast.success(message)
   }
   return (
     

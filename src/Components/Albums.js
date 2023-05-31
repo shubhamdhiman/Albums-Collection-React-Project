@@ -3,7 +3,7 @@ import "../Assets/css/AlbumContainer.css";
 
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
-function Albums({ album, deleteData, changePage }) {
+function Albums({ album, deleteData, changePage, changeUpdateId }) {
   //   const showToastMessage = () => {
   //     console.log("toast Success")
   //     toast.success('Success Notification !', {
@@ -31,8 +31,10 @@ function Albums({ album, deleteData, changePage }) {
           </button>
           <button
             className="update"
-            onClick={() => {
-              changePage("UpdateAlbum")
+            onClick={(e) => {
+              changeUpdateId(data?.id);
+              changePage("UpdateAlbum");
+              // console.log(data?.id)
             }}
           >
             Update

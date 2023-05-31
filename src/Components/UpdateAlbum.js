@@ -27,6 +27,8 @@ function UpdateAlbum({ updateId, updateData, album }) {
      toast.success(message, {
       toastId: 'success1',
   })
+  setNewTitle("")
+  setPrvId("")
   }
   return (
     <div className="container">
@@ -35,6 +37,7 @@ function UpdateAlbum({ updateId, updateData, album }) {
           Update Title
           <input
             type="text"
+            value={newTitle}
             onChange={(e) => {
                 setNewTitle(e.target.value);
             }}
@@ -42,7 +45,7 @@ function UpdateAlbum({ updateId, updateData, album }) {
           ></input>
         </label>
         <label>
-         Update Id<input type="number" onChange={(e) => {
+         Update Id<input  type="number" value={prvId} onChange={(e) => {
                 setPrvId(e.target.value);
             }}  required></input>
          </label>

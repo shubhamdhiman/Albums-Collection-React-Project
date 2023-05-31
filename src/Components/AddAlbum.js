@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
 import '../Assets/css/addAlbum.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AddAlbum({album,addData}) {
   const [title,setTitle] = useState("")
   const [userId,setUserId] = useState("")
@@ -13,6 +16,9 @@ function AddAlbum({album,addData}) {
     let newData = [...album, {userId:userId,title:title,id:album.length+1} ]
     changeToInitial()
     addData(newData)
+    toast.success(`Album Added. UserId is ${userId}`, {
+      toastId: 'success1',
+  })
   }
   return (
     
@@ -26,6 +32,7 @@ function AddAlbum({album,addData}) {
          </label>
           <button type='submit' onClick={(e)=>{addUser(e)}}>Add</button>
         </form>
+        <ToastContainer />
     </div>
   )
 }

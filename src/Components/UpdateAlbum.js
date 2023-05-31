@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function UpdateAlbum({ updateId, updateData, album }) {
   const [newTitle, setNewTitle] = useState("");
@@ -21,6 +23,9 @@ function UpdateAlbum({ updateId, updateData, album }) {
 
      // Set the updated array as the new state
      updateData(updatedItems);
+     toast.success(`UserId ${itemToUpdate.userId} Data Updated, New UserId is ${updatedItem.userId} `, {
+      toastId: 'success1',
+  })
   }
   return (
     <div className="container">
@@ -42,6 +47,7 @@ function UpdateAlbum({ updateId, updateData, album }) {
          </label>
         <button type="submit" onClick={(e)=>{updateNewData(e)}}>Add</button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

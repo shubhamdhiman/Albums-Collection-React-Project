@@ -1,30 +1,27 @@
 import React from "react";
 import "../Assets/css/AlbumContainer.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 function Albums({ album, deleteData, changePage, changeUpdateId }) {
-  //   const showToastMessage = () => {
-  //     console.log("toast Success")
-  //     toast.success('Success Notification !', {
-  //         position: toast.POSITION.BOTTOM_CENTER
-  //     });
-  // };
-  function filterToDelete(id) {
+  const showToastMessage = (userId) => {
+      toast.success(`Item Removed. UserId is ${userId}`)
+  };
+  function filterToDelete(id,userId) {
     let afterDelete = album.filter((value) => value.id !== id);
-    console.log(afterDelete);
     deleteData(afterDelete);
-    // showToastMessage()
+    showToastMessage(userId)
   }
   function renderAlbum(data, index) {
     return (
       <div className="albumBox" key={index}>
         <p className="albumname">{data?.title}</p>
+        <p className="albumname"><strong>User Id</strong> &gt;&nbsp;{data?.userId}</p>
         <div className="buttons">
           <button
             className="delete"
             onClick={() => {
-              filterToDelete(data.id);
+              filterToDelete(data.id,data.userId);
             }}
           >
             Delete
@@ -39,6 +36,7 @@ function Albums({ album, deleteData, changePage, changeUpdateId }) {
           >
             Update
           </button>
+          
         </div>
       </div>
     );
@@ -50,6 +48,7 @@ function Albums({ album, deleteData, changePage, changeUpdateId }) {
         album.map((data, index) => {
           return renderAlbum(data, index);
         })}
+        <ToastContainer />
     </div>
   );
 }
